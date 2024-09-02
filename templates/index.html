@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Exam Performance Indicator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <h1>Student Exam Performance Indicator</h1>
+        <h2>Made by Emon Hasan</h2>
+
+        <h5>To get started, please enter your demographic information</h5>
+
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <div class="row">
+                <div class="col-md-6 form-group animate__animated animate__fadeInLeft">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" id="gender" name="gender" required>
+                        <option value="" disabled {{ 'selected' if not gender else '' }}>Select your Gender</option>
+                        <option value="male" {{ 'selected' if gender == 'male' else '' }}>Male</option>
+                        <option value="female" {{ 'selected' if gender == 'female' else '' }}>Female</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 form-group animate__animated animate__fadeInRight">
+                    <label for="ethnicity">Race or Ethnicity</label>
+                    <select class="form-control" id="ethnicity" name="ethnicity" required>
+                        <option value="" disabled {{ 'selected' if not race_ethnicity else '' }}>Select Ethnicity</option>
+                        <option value="group A" {{ 'selected' if race_ethnicity == 'group A' else '' }}>Group A</option>
+                        <option value="group B" {{ 'selected' if race_ethnicity == 'group B' else '' }}>Group B</option>
+                        <option value="group C" {{ 'selected' if race_ethnicity == 'group C' else '' }}>Group C</option>
+                        <option value="group D" {{ 'selected' if race_ethnicity == 'group D' else '' }}>Group D</option>
+                        <option value="group E" {{ 'selected' if race_ethnicity == 'group E' else '' }}>Group E</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group animate__animated animate__fadeInLeft">
+                    <label for="parent-education">Parental Level of Education</label>
+                    <select class="form-control" id="parent-education" name="parental_level_of_education" required>
+                        <option value="" disabled {{ 'selected' if not parental_level_of_education else '' }}>Select Parent Education</option>
+                        <option value="associate's degree" {{ 'selected' if parental_level_of_education == "associate's degree" else '' }}>Associate's Degree</option>
+                        <option value="bachelor's degree" {{ 'selected' if parental_level_of_education == "bachelor's degree" else '' }}>Bachelor's Degree</option>
+                        <option value="high school" {{ 'selected' if parental_level_of_education == "high school" else '' }}>High School</option>
+                        <option value="master's degree" {{ 'selected' if parental_level_of_education == "master's degree" else '' }}>Master's Degree</option>
+                        <option value="some college" {{ 'selected' if parental_level_of_education == "some college" else '' }}>Some College</option>
+                        <option value="some high school" {{ 'selected' if parental_level_of_education == "some high school" else '' }}>Some High School</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 form-group animate__animated animate__fadeInRight">
+                    <label for="lunch">Lunch Type</label>
+                    <select class="form-control" id="lunch" name="lunch" required>
+                        <option value="" disabled {{ 'selected' if not lunch else '' }}>Select Lunch Type</option>
+                        <option value="free/reduced" {{ 'selected' if lunch == "free/reduced" else '' }}>Free/Reduced</option>
+                        <option value="standard" {{ 'selected' if lunch == "standard" else '' }}>Standard</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group animate__animated animate__fadeInLeft">
+                    <label for="test-course">Test Preparation Course</label>
+                    <select class="form-control" id="test-course" name="test_preparation_course" required>
+                        <option value="" disabled {{ 'selected' if not test_preparation_course else '' }}>Select Test Course</option>
+                        <option value="none" {{ 'selected' if test_preparation_course == "none" else '' }}>None</option>
+                        <option value="completed" {{ 'selected' if test_preparation_course == "completed" else '' }}>Completed</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 form-group animate__animated animate__fadeInRight">
+                    <label for="reading-score">Reading Score out of 100</label>
+                    <input class="form-control" id="reading-score" type="number" name="reading_score"
+                        placeholder="Enter your Reading score" min="0" max="100" value="{{ reading_score }}" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group animate__animated animate__fadeInLeft">
+                    <label for="writing-score">Writing Score out of 100</label>
+                    <input class="form-control" id="writing-score" type="number" name="writing_score"
+                        placeholder="Enter your Writing score" min="0" max="100" value="{{ writing_score }}" required>
+                </div>
+            </div>
+
+            <button class="btn btn-primary animate__animated animate__pulse" type="submit">Predict Performance</button>
+        </form>
+
+        {% if results %}
+        <!-- Placeholder for the result card -->
+        <div class="card animate__animated animate__slideInUp mt-5">
+            <div class="card-body">
+                Prediction Result: <span id="prediction-result">{{ results }}</span>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <!-- Display any error message -->
+        <div class="alert alert-danger animate__animated animate__slideInUp mt-3">
+            {{ error }}
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        &copy; 2024 Designed by <a href="https://github.com/Md-Emon-Hasan" target="_blank">Md Emon Hasan</a>. All Rights Reserved.
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
