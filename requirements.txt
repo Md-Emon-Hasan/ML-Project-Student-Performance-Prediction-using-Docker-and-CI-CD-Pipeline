@@ -6,4 +6,5 @@ scikit-learn
 xgboost
 Flask
 dill
+pytest
 # -e .
