@@ -1,6 +1,6 @@
 # 🎓 Student Performance Prediction System
 
-Welcome to the **Student Performance Prediction System** repository! This project uses machine learning to predict student performance based on various features. It leverages Docker for containerization, GitHub Actions for CI/CD, and is deployed on Render for live access.
+Welcome to the **Student Performance Prediction System** repository! This project uses machine learning to predict student performance based on various features. It leverages Docker for containerization, GitHub Actions for CI/CD access.
 
 ![Capture](https://github.com/user-attachments/assets/43d3185b-f796-4d83-8179-4dad51d14153)
 
@@ -9,9 +9,7 @@ Welcome to the **Student Performance Prediction System** repository! This projec
 - [Introduction](#introduction)
 - [Topics Covered](#topics-covered)
 - [Getting Started](#getting-started)
-- [Live Demo](#live-demo)
 - [Docker and CI/CD](#docker-and-ci-cd)
-- [Deploy on Render](#deploy-on-render)
 - [Best Practices](#best-practices)
 - [FAQ](#faq)
 - [Troubleshooting](#troubleshooting)
@@ -27,7 +25,7 @@ Welcome to the **Student Performance Prediction System** repository! This projec
 
 ## 📖 Introduction
 
-This repository demonstrates a machine learning project focused on predicting student performance based on various features. The project showcases the use of Docker for containerization, CI/CD pipelines with GitHub Actions, and deployment on Render for live demonstrations.
+This repository demonstrates a machine learning project focused on predicting student performance based on various features. The project showcases the use of Docker for containerization, CI/CD pipelines with GitHub Actions demonstrations.
 
 ---
 
@@ -39,7 +37,6 @@ This repository demonstrates a machine learning project focused on predicting st
 - **Deployment:** Serving the model using Flask and deploying it as a web service.
 - **Docker:** Containerizing the application to ensure consistency across different environments.
 - **CI/CD:** Automating testing and deployment using GitHub Actions.
-- **Render:** Deploying the application on Render for online access.
 
 ---
 
@@ -86,12 +83,6 @@ To start with this project, follow these instructions:
 
 ---
 
-## 🎉 Live Demo
-
-Explore the live version of the Student Performance Prediction app [here](https://ml-project-student-performance-prediction.onrender.com).
-
----
-
 ## 🐳 Docker and CI/CD
 
 ### Docker
@@ -124,23 +115,6 @@ The project employs GitHub Actions for continuous integration and deployment. Th
 - **Build and Deploy:** Builds the Docker image and deploys the app to a cloud platform.
 
 Check out the workflow file in `.github/workflows/ci-cd.yml`.
-
----
-
-## 🌐 Deploy on Render
-
-Follow these steps to deploy on Render:
-
-1. **Sign up for Render:** Create an account on [Render](https://render.com).
-
-2. **Create a new Web Service:** 
-   - Select "New Web Service" from your Render dashboard.
-   - Connect your GitHub repository.
-   - Choose your branch (e.g., `main`) and configure build and runtime settings.
-
-3. **Deploy:** Render will automatically build and deploy your application.
-
-4. **Access your live app:** Visit the URL provided by Render after successful deployment.
 
 ---
 
@@ -220,7 +194,6 @@ Explore the following resources for more information:
 
 - **Docker Official Documentation:** [docs.docker.com](https://docs.docker.com/)
 - **GitHub Actions Documentation:** [docs.github.com](https://docs.github.com/en/actions)
-- **Render Documentation:** [render.com/docs](https://render.com/docs)
 - **Machine Learning Tutorials:** [Kaggle](https://www.kaggle.com/learn/overview)
 
 ---
